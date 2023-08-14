@@ -59,3 +59,6 @@ let r3 = { FieldA = null }
 let r4 = { FieldA = null }
 
 printf $"Record with null should equal: {r3 = r4}" 
+
+// Try parse TimeSpan
+TimeSpan.TryParse("12:34") |> printfn "TimeSpan TryParse %A"
