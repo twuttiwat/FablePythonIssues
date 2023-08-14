@@ -1,7 +1,9 @@
 from typing import Any
 from fable_modules.fable_library.date import (now, today as today_1, add_days, add_months, specify_kind, days_in_month as days_in_month_1, to_string, day, month, date, hour, minute, second, millisecond, to_universal_time, to_local_time)
 from fable_modules.fable_library.date_offset import (now as now_1, day as day_1, month as month_1, date as date_1, hour as hour_1, minute as minute_1, second as second_1, millisecond as millisecond_1, to_universal_time as to_universal_time_1, to_local_time as to_local_time_1)
+from fable_modules.fable_library.reflection import (full_name, uint64_type)
 from fable_modules.fable_library.string_ import to_console
+from fable_modules.fable_library.types import uint64
 
 current_date: Any = now()
 
@@ -66,4 +68,13 @@ to_console(("Current Offset Millisecond is " + str(millisecond_1(current_date_of
 to_console(("Current Offset UniversalTime is " + str(to_universal_time_1(current_date_offset))) + "")
 
 to_console(("Current Offset LocalTime is " + str(to_local_time_1(current_date_offset))) + "")
+
+an_unit64: uint64 = uint64(1)
+
+def _arrow2(__unit: None=None) -> Any:
+    copy_of_struct: uint64 = an_unit64
+    return uint64_type
+
+
+to_console(("FullName of Uint64 Type is " + full_name(_arrow2())) + ".")
 
