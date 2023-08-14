@@ -42,3 +42,20 @@ printf $"Current Offset LocalTime is {currentDateOffset.ToLocalTime()}"
 /// Reflection issues
 let anUnit64 = 1UL
 printf $"FullName of Uint64 Type is {anUnit64.GetType().FullName}."
+
+/// Compare None  
+type RecordWithNone = {
+    FieldA: string option
+}
+let r1 = { FieldA = None }
+let r2 = { FieldA = None }
+
+printf $"Record with None should equal: {r1 = r2}" 
+
+type RecordWithNil = {
+    FieldA: string
+}
+let r3 = { FieldA = null }
+let r4 = { FieldA = null }
+
+printf $"Record with null should equal: {r3 = r4}" 

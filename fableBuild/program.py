@@ -1,9 +1,12 @@
-from typing import Any
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import (Any, Optional)
 from fable_modules.fable_library.date import (now, today as today_1, add_days, add_months, specify_kind, days_in_month as days_in_month_1, to_string, day, month, date, hour, minute, second, millisecond, to_universal_time, to_local_time)
 from fable_modules.fable_library.date_offset import (now as now_1, day as day_1, month as month_1, date as date_1, hour as hour_1, minute as minute_1, second as second_1, millisecond as millisecond_1, to_universal_time as to_universal_time_1, to_local_time as to_local_time_1)
-from fable_modules.fable_library.reflection import (full_name, uint64_type)
+from fable_modules.fable_library.reflection import (full_name, uint64_type, TypeInfo, string_type, option_type, record_type)
 from fable_modules.fable_library.string_ import to_console
-from fable_modules.fable_library.types import uint64
+from fable_modules.fable_library.types import (uint64, Record)
+from fable_modules.fable_library.util import equals
 
 current_date: Any = now()
 
@@ -71,10 +74,42 @@ to_console(("Current Offset LocalTime is " + str(to_local_time_1(current_date_of
 
 an_unit64: uint64 = uint64(1)
 
-def _arrow2(__unit: None=None) -> Any:
+def _arrow21(__unit: None=None) -> Any:
     copy_of_struct: uint64 = an_unit64
     return uint64_type
 
 
-to_console(("FullName of Uint64 Type is " + full_name(_arrow2())) + ".")
+to_console(("FullName of Uint64 Type is " + full_name(_arrow21())) + ".")
+
+def _expr22() -> TypeInfo:
+    return record_type("Program.RecordWithNone", [], RecordWithNone, lambda: [("FieldA", option_type(string_type))])
+
+
+@dataclass(eq = False, repr = False)
+class RecordWithNone(Record):
+    FieldA: Optional[str]
+
+RecordWithNone_reflection = _expr22
+
+r1: RecordWithNone = RecordWithNone(None)
+
+r2: RecordWithNone = RecordWithNone(None)
+
+to_console(("Record with None should equal: " + str(equals(r1, r2))) + "")
+
+def _expr23() -> TypeInfo:
+    return record_type("Program.RecordWithNil", [], RecordWithNil, lambda: [("FieldA", string_type)])
+
+
+@dataclass(eq = False, repr = False)
+class RecordWithNil(Record):
+    FieldA: str
+
+RecordWithNil_reflection = _expr23
+
+r3: RecordWithNil = RecordWithNil(None)
+
+r4: RecordWithNil = RecordWithNil(None)
+
+to_console(("Record with null should equal: " + str(equals(r3, r4))) + "")
 
