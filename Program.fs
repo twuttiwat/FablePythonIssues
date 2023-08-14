@@ -62,3 +62,7 @@ printf $"Record with null should equal: {r3 = r4}"
 
 // Try parse TimeSpan
 TimeSpan.TryParse("12:34") |> printfn "TimeSpan TryParse %A"
+
+open System
+// Try parse DateTime
+DateTime.TryParse("1/1/2000") |> printfn "DateTime TryParse %A"
