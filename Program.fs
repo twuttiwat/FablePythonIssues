@@ -66,3 +66,6 @@ TimeSpan.TryParse("12:34") |> printfn "TimeSpan TryParse %A"
 open System
 // Try parse DateTime
 DateTime.TryParse("1/1/2000") |> printfn "DateTime TryParse %A"
+
+// Try parse DateTimeOffset
+DateTimeOffset.TryParse("1/1/2000") |> printfn "DateTimeOffset TryParse %A"

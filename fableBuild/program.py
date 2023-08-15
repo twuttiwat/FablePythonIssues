@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import (Any, Optional, Tuple)
 from fable_modules.fable_library.date import (now, today as today_1, add_days, add_months, specify_kind, days_in_month as days_in_month_1, to_string, day, month, date, hour, minute, second, millisecond, to_universal_time, to_local_time, min_value, try_parse as try_parse_1)
-from fable_modules.fable_library.date_offset import (now as now_1, day as day_1, month as month_1, date as date_1, hour as hour_1, minute as minute_1, second as second_1, millisecond as millisecond_1, to_universal_time as to_universal_time_1, to_local_time as to_local_time_1)
+from fable_modules.fable_library.date_offset import (now as now_1, day as day_1, month as month_1, date as date_1, hour as hour_1, minute as minute_1, second as second_1, millisecond as millisecond_1, to_universal_time as to_universal_time_1, to_local_time as to_local_time_1, min_value as min_value_1, try_parse as try_parse_2)
 from fable_modules.fable_library.reflection import (full_name, uint64_type, TypeInfo, string_type, option_type, record_type)
 from fable_modules.fable_library.string_ import (to_console, printf)
 from fable_modules.fable_library.time_span import (create, try_parse)
@@ -75,14 +75,14 @@ to_console(("Current Offset LocalTime is " + str(to_local_time_1(current_date_of
 
 an_unit64: uint64 = uint64(1)
 
-def _arrow59(__unit: None=None) -> Any:
+def _arrow84(__unit: None=None) -> Any:
     copy_of_struct: uint64 = an_unit64
     return uint64_type
 
 
-to_console(("FullName of Uint64 Type is " + full_name(_arrow59())) + ".")
+to_console(("FullName of Uint64 Type is " + full_name(_arrow84())) + ".")
 
-def _expr60() -> TypeInfo:
+def _expr85() -> TypeInfo:
     return record_type("Program.RecordWithNone", [], RecordWithNone, lambda: [("FieldA", option_type(string_type))])
 
 
@@ -90,7 +90,7 @@ def _expr60() -> TypeInfo:
 class RecordWithNone(Record):
     FieldA: Optional[str]
 
-RecordWithNone_reflection = _expr60
+RecordWithNone_reflection = _expr85
 
 r1: RecordWithNone = RecordWithNone(None)
 
@@ -98,7 +98,7 @@ r2: RecordWithNone = RecordWithNone(None)
 
 to_console(("Record with None should equal: " + str(equals(r1, r2))) + "")
 
-def _expr61() -> TypeInfo:
+def _expr86() -> TypeInfo:
     return record_type("Program.RecordWithNil", [], RecordWithNil, lambda: [("FieldA", string_type)])
 
 
@@ -106,7 +106,7 @@ def _expr61() -> TypeInfo:
 class RecordWithNil(Record):
     FieldA: str
 
-RecordWithNil_reflection = _expr61
+RecordWithNil_reflection = _expr86
 
 r3: RecordWithNil = RecordWithNil(None)
 
@@ -118,17 +118,17 @@ tupled_arg: Tuple[bool, Any]
 
 out_arg: Any = create(0)
 
-def _arrow62(__unit: None=None) -> Any:
+def _arrow87(__unit: None=None) -> Any:
     return out_arg
 
 
-def _arrow63(v: Any) -> None:
+def _arrow88(v: Any) -> None:
     global out_arg
     out_arg = v
 
 
 
-tupled_arg = (try_parse("12:34", FSharpRef(_arrow62, _arrow63)), out_arg)
+tupled_arg = (try_parse("12:34", FSharpRef(_arrow87, _arrow88)), out_arg)
 
 to_console(printf("TimeSpan TryParse %A"))((tupled_arg[0], tupled_arg[1]))
 
@@ -136,17 +136,35 @@ tupled_arg: Tuple[bool, Any]
 
 out_arg: Any = min_value()
 
-def _arrow64(__unit: None=None) -> Any:
+def _arrow89(__unit: None=None) -> Any:
     return out_arg
 
 
-def _arrow65(v: Any) -> None:
+def _arrow90(v: Any) -> None:
     global out_arg
     out_arg = v
 
 
 
-tupled_arg = (try_parse_1("1/1/2000", FSharpRef(_arrow64, _arrow65)), out_arg)
+tupled_arg = (try_parse_1("1/1/2000", FSharpRef(_arrow89, _arrow90)), out_arg)
 
 to_console(printf("DateTime TryParse %A"))((tupled_arg[0], tupled_arg[1]))
+
+tupled_arg: Tuple[bool, Any]
+
+out_arg: Any = min_value_1()
+
+def _arrow91(__unit: None=None) -> Any:
+    return out_arg
+
+
+def _arrow92(v: Any) -> None:
+    global out_arg
+    out_arg = v
+
+
+
+tupled_arg = (try_parse_2("1/1/2000", FSharpRef(_arrow91, _arrow92)), out_arg)
+
+to_console(printf("DateTimeOffset TryParse %A"))((tupled_arg[0], tupled_arg[1]))
 
