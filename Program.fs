@@ -69,3 +69,15 @@ DateTime.TryParse("1/1/2000") |> printfn "DateTime TryParse %A"
 
 // Try parse DateTimeOffset
 DateTimeOffset.TryParse("1/1/2000") |> printfn "DateTimeOffset TryParse %A"
+
+// Missing all Array.Parallel functions
+
+/// Sort in place issues
+let arr1 = [| 4;3;2 |]
+Array.sortInPlace arr1
+printf $"arr1 is {arr1}"
+
+let arr2 = [| 4;3;2 |]
+Array.sortInPlaceWith (-) arr2
+printf $"arr2 is {arr2}"
+ 
