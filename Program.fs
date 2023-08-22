@@ -81,3 +81,8 @@ let arr2 = [| 4;3;2 |]
 Array.sortInPlaceWith (-) arr2
 printf $"arr2 is {arr2}"
  
+/// Missing compare_primitive comparer
+let dgetf2(m: int, n: int, lda: int): unit =
+    for j = 0 to (min m n)-1 do
+        printf $"{j}"
+ 
